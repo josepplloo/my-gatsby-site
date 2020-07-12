@@ -31,7 +31,11 @@ function Header({ siteTitle }) {
             {siteTitle}
           </Link>
         </h1>
-        <button type="button" onClick={handleToggle}>Toggle</button>
+        <div style={styles(mode).buttonContainer}>
+          <button type="button" onClick={handleToggle} style={styles(mode).toggle}>
+            { mode === themes.light ? '☽' : '☼' }
+          </button>
+        </div>
       </div>
     </header>
   );
