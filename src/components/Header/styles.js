@@ -2,6 +2,7 @@ export const styles = ({foreground, background}) => ({
   header: {
     background: background,
     marginBottom: '1.45rem',
+    minWidth: '100%',
     position: 'fixed',
     transition: 'all 1s ease-out',
   },
@@ -12,7 +13,6 @@ export const styles = ({foreground, background}) => ({
     margin: '0 auto',
     padding: '1.45rem 1.0875rem',
     transition: 'all 1s ease-out',
-    width: '100%'
   },
   title: {
     margin: 0
