@@ -1,39 +1,30 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React, { useContext, useState, useCallback } from "react"
+import React, { useContext } from "react"
 import {styles} from './styles'
-import { ThemeContext } from "../Context/Theme";
+import { ThemeContext, useThemes } from "../Context/Theme";
 
-function Header({ siteTitle }) {
+function Header({ siteTitle, handleToggle, theme }) {
   const themes = useContext(ThemeContext);
-  const [mode, setMode] = useState(themes.light);
-
-  const handleToggle = useCallback(() => { 
-    if (mode === themes.light) {
-      setMode(themes.dark);
-    } else {
-      setMode(themes.light);
-    }
-  },[setMode, mode, themes]);
 
   return (
     <header
-      style={styles(mode).header}
+      style={styles(theme).header}
     >
       <div
-        style={styles(mode).navbar}
+        style={styles(theme).navbar}
       >
-        <h1 style={styles(mode).title}>
+        <h1 style={styles(theme).title}>
           <Link
             to="/"
-            style={styles(mode).link}
+            style={styles(theme).link}
           >
             {siteTitle}
           </Link>
         </h1>
-        <div style={styles(mode).buttonContainer}>
-          <button type="button" onClick={handleToggle} style={styles(mode).toggle}>
-            { mode === themes.light ? '☽' : '☼' }
+        <div style={styles(theme).buttonContainer}>
+          <button type="button" onClick={handleToggle} style={styles(theme).toggle}>
+            { theme === themes.light ? '☽' : '☼' }
           </button>
         </div>
       </div>

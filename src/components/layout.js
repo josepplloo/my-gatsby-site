@@ -9,11 +9,12 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
-import { ThemeContext, themes } from './Context/Theme'
+import { ThemeContext, themes, useThemes } from './Context/Theme'
 import Header from "./Header"
 import "./layout.css"
 
 const Layout = ({ children }) => {
+  const [theme, handleToggle ] = useThemes();
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -23,12 +24,14 @@ const Layout = ({ children }) => {
       }
     }
   `)
-
+console.log(theme.foreground);
   return (
     <ThemeContext.Provider value={themes}>
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <Header siteTitle={data.site.siteMetadata.title} handleToggle={handleToggle} theme={theme}/>
       <div
         style={{
+          color: theme.foreground,
+          background: theme.background,
           margin: `0 auto`,
           maxWidth: 960,
           padding: `10rem 1.0875rem 1.45rem`,
