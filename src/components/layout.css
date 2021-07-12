@@ -40,6 +40,7 @@ template {
   display: none;
 }
 a {
+  color: inherit;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
 }
@@ -197,6 +198,9 @@ html {
 }
 *:after {
   box-sizing: inherit;
+}
+*:focus {
+  outline: none;
 }
 body {
   color: hsla(0, 0%, 0%, 0.8);
